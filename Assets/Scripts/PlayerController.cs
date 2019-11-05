@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
 
         transform.Rotate(new Vector3(x, y, 0));
         transform.position += transform.forward * Time.deltaTime * speed;
-        Debug.Log("Move to " + transform.position.ToString() + " time " + Time.deltaTime + " forward " + transform.forward.ToString() + " speed " + speed.ToString());
-        Debug.Log("Time scale = " + Time.timeScale);
+        //Debug.Log("Move to " + transform.position.ToString() + " time " + Time.deltaTime + " forward " + transform.forward.ToString() + " speed " + speed.ToString());
+        //Debug.Log("Time scale = " + Time.timeScale);
 
         /* 
         if (!x.Equals(0) && !y.Equals(0))
