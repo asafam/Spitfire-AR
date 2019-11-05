@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     // Spawn rate per seconds
     public float spawnRate = 8f;
 
+    public float spawnPositionMult = 7f;
+
     private GameObject player;
 
     // Variable to set next spawn time
@@ -35,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
             if (GameObject.FindGameObjectsWithTag("Enemy").Length < maxEnemies)
             {
                 Random.InitState(System.DateTime.Now.Millisecond);
-                spawnPos = Random.onUnitSphere + player.transform.position;
+                spawnPos = Random.onUnitSphere * spawnPositionMult + player.transform.position;
                 Instantiate(enemy, spawnPos, Quaternion.LookRotation(transform.position));
                 Debug.Log("Enemy spawned");
             }
