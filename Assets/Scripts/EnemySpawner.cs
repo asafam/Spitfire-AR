@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
             if (GameObject.FindGameObjectsWithTag("Enemy").Length < maxEnemies)
             {
                 Random.InitState(System.DateTime.Now.Millisecond);
-                spawnPos = Random.onUnitSphere + player.transform.position;
+                spawnPos = Random.onUnitSphere * 6f + player.transform.position;
                 Instantiate(enemy, spawnPos, Quaternion.LookRotation(transform.position));
                 Debug.Log("Enemy spawned");
             }
