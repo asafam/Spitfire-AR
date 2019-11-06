@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 0.3f;
     private Quaternion quat;
+    public GameObject deathUI;
 
     void Update()
     {
@@ -60,6 +61,9 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
+
+        deathUI.SetActive(true);
+
         Debug.Log("OnTriggerEnter");
         int damage = -1 * int.MaxValue;
         
