@@ -10,6 +10,13 @@ public class EnemyHealth : Health
 
         // Add death animation
 
-        Destroy(gameObject);
+
+        // if (opponentHealth.currentHealth < 5) {
+        //     gameObject.GetComponent<Rigidbody>().useGravity = true;
+        // }
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
     }
 }

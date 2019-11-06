@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        Pathfinding();
+        // Pathfinding();
     }
 
     private void FaceTarget()
