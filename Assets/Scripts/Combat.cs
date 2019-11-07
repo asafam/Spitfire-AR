@@ -46,7 +46,7 @@ public class Combat : MonoBehaviour
 
             if (opponent != null && IsFoe(opponent))
             {
-                Debug.Log("Shooting to mofo!!!!!!!!!!!!");
+                Debug.Log("Shooting to kill!!!!!!!!!!!!");
                 Debug.DrawLine(transform.position, transform.forward, Color.red);
                 Health opponentHealth = opponent.GetComponent<Health>();
                 StartCoroutine(DoDamage(opponentHealth, attackDelay));
@@ -76,9 +76,9 @@ public class Combat : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, myPower.maxDistance))
         {
             Debug.Log("Enemy in range!!! Shoot!");
-            
+
             gunfireLine.SetPosition(1, hit.point);
-            
+
             return hit.collider.gameObject;
         }
         return null;
@@ -88,12 +88,23 @@ public class Combat : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        shootingAudio.Play();
+        if (shootingAudio != null) 
+        {
+            shootingAudio.Play();
+        }
+        
         gunfireLine.enabled = true;
         yield return 1;
         gunfireLine.enabled = false;
-        shootingAudio.Stop();
+        
+        if (shootingAudio != null) 
+        {
+            shootingAudio.Stop();
+        }
 
-        opponentHealth.ModifyHealth(-1 * myPower.damage);
+        if (opponentHealth != null)
+        {
+            opponentHealth.ModifyHealth(-1 * myPower.damage);
+        }
     }
 }
