@@ -7,6 +7,7 @@ TagManager:
   - UI
   - Object
   - Enemy
+  - Score
   layers:
   - Default
   - TransparentFX
