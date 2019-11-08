@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public GameObject enemyMasterPrefab;
     public int enemiesCount = 4;
     public event Action OnEnemyKilled = delegate { };
 

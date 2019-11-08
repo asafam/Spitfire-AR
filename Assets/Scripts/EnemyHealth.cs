@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class EnemyHealth : Health
 {
+    public GameObject explosion;
+
     public override void Die()
     {
         base.Die();
 
-        // Add death animation
-
-
-        // if (opponentHealth.currentHealth < 5) {
-        //     gameObject.GetComponent<Rigidbody>().useGravity = true;
-        // }
-        if (gameObject != null)
-        {
-            Destroy(gameObject);
-        }
+        // Death animation
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        // yield return new WaitForSeconds(1);
+        Destroy(gameObject, 2);
     }
 }
