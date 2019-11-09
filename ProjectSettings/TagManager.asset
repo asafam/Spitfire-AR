@@ -8,6 +8,9 @@ TagManager:
   - Object
   - Enemy
   - Score
+  - Fire
+  - Aircraft
+  - winScreen
   layers:
   - Default
   - TransparentFX

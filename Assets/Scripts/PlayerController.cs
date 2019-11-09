@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 0.3f;
     private Quaternion quat;
+    //public GameObject deathUI;
 
     void Update()
     {
