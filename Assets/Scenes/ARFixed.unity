@@ -450,8 +450,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UseCustomMaterial: 0
   m_CustomMaterial: {fileID: 0}
-  m_UseCustomRendererAsset: 0
-  m_CustomRendererAsset: {fileID: 0}
 --- !u!20 &282840813
 Camera:
   m_ObjectHideFlags: 0
@@ -682,7 +680,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98589212951e041829eff0770e6be1d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 532453602148506940, guid: 0986966c8457e40f99a1102569b5a3f8,
+    type: 3}
+  enemyMasterPrefab: {fileID: 7020199738708474384, guid: 4eae9069871744691a2a47d88935185b,
+    type: 3}
   enemiesCount: 4
 --- !u!114 &387139444
 MonoBehaviour:
@@ -696,6 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00420960d3de240e69b3095e7e853736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winhUI: {fileID: 0}
   deathUI: {fileID: 1669691168}
   scoreGameObject: {fileID: 827760543}
 --- !u!4 &387139445
@@ -1268,7 +1270,7 @@ PrefabInstance:
     - target: {fileID: 393250320774510045, guid: 818d5c8d75a504c90a10193c27bc35d1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.451
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 393250320774510045, guid: 818d5c8d75a504c90a10193c27bc35d1,
         type: 3}
@@ -1309,6 +1311,15 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 707316884, guid: 818d5c8d75a504c90a10193c27bc35d1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77d08210df254d845885518314593544, type: 2}
+    - target: {fileID: 393250320774510044, guid: 818d5c8d75a504c90a10193c27bc35d1,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 818d5c8d75a504c90a10193c27bc35d1, type: 3}
@@ -1540,7 +1551,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: NaN, y: 0, z: Infinity, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -2010,6 +2021,7 @@ GameObject:
   - component: {fileID: 1335839537}
   - component: {fileID: 1335839536}
   - component: {fileID: 1335839539}
+  - component: {fileID: 1335839538}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -2074,6 +2086,23 @@ MonoBehaviour:
   m_PlanePrefab: {fileID: 2351371133844944508, guid: f0e0be81472ff1243aa2afa27e5d0e61,
     type: 3}
   m_DetectionMode: -1
+--- !u!114 &1335839538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335839533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedLibrary: {fileID: 11400000, guid: 3e5104ffba2c3417d8cfa26b3a6fd227,
+    type: 2}
+  m_MaxNumberOfMovingImages: 0
+  m_TrackedImagePrefab: {fileID: 7020199738708474384, guid: 4eae9069871744691a2a47d88935185b,
+    type: 3}
 --- !u!114 &1335839539
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,8 +7,6 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     public GameObject player;
-    public event Action OnPlayerKilled = delegate { };
-    public event Action OnPlayerWon = delegate { };
 
     private void Awake()
     {
@@ -25,19 +23,13 @@ public class PlayerManager : MonoBehaviour
         // sound.enabled = true;
     }
 
-    public void KillPlayer()
+    public void PlayerKilled()
     {
-        if (OnPlayerKilled != null)
-        {
-            OnPlayerKilled();
-        }
+        GameManager.instance.LostGame();
     }
 
-    public void Win()
+    public void PlayerLanded()
     {
-        if (OnPlayerWon != null)
-        {
-            OnPlayerWon();
-        }
+        GameManager.instance.WonGame();
     }
 }
