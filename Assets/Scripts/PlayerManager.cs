@@ -27,4 +27,9 @@ public class PlayerManager : MonoBehaviour
     {
         GameManager.instance.LostGame();
     }
+
+    public void PlayerLanded()
+    {
+        GameManager.instance.WonGame();
+    }
 }

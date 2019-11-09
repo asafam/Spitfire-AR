@@ -7,7 +7,6 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;
     public GameObject enemyPrefab;
-    public GameObject enemyMasterPrefab;
     public int enemiesCount = 0;
 
     private void Awake()
@@ -18,10 +17,5 @@ public class EnemyManager : MonoBehaviour
     public void EnemyKilled(GameObject enemy)
     {
         enemiesCount++;
-
-        if (enemy.GetComponent<EnemyAircraftCarrier>())
-        {
-            GameManager.instance.WonGame();
-        }
     }
 }
