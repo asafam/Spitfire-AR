@@ -19,6 +19,7 @@ public class Combat : MonoBehaviour
     private bool isPlayer;
     private ARSessionOrigin aRSessionOrigin;
     private LineRenderer gunfireLine;
+    public AudioSource shooting;
 
 
     private void Start()
@@ -29,6 +30,7 @@ public class Combat : MonoBehaviour
         isPlayer = GetComponent<Player>() != null;
         gunfireLine = GetComponent<LineRenderer>();
         aRSessionOrigin = FindObjectOfType<ARSessionOrigin>();
+        shooting = GetComponent<AudioSource>();
     }
 
     private void Update()
