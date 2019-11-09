@@ -10,6 +10,7 @@ public class Combat : MonoBehaviour
     public event Action<GameObject> OnAttack = delegate { }; // callback delegate to notify on attack - can be used , for example, to setup animation
     public float attackSpeed = 1f;
     public float attackDelay = 0.6f;
+    public AudioSource shootingAudio;
     private float attackCooldown = 0f; // time in seconds in which the enxt attack will take place
     private Transform target;
     private Health myHealth;
@@ -17,6 +18,7 @@ public class Combat : MonoBehaviour
     private bool isEnemy;
     private bool isPlayer;
     private ARSessionOrigin aRSessionOrigin;
+    private LineRenderer gunfireLine;
 
 
     private void Start()
@@ -25,13 +27,15 @@ public class Combat : MonoBehaviour
         myPower = GetComponent<Power>();
         isEnemy = GetComponent<Enemy>() != null;
         isPlayer = GetComponent<Player>() != null;
-
+        gunfireLine = GetComponent<LineRenderer>();
         aRSessionOrigin = FindObjectOfType<ARSessionOrigin>();
     }
 
     private void Update()
     {
         attackCooldown -= Time.deltaTime;
+
+        gunfireLine.SetPosition(0, transform.position);
     }
     public void Attack()
     {
@@ -42,6 +46,7 @@ public class Combat : MonoBehaviour
 
             if (opponent != null && IsFoe(opponent))
             {
+                Debug.Log("Shooting to kill!!!!!!!!!!!!");
                 Debug.DrawLine(transform.position, transform.forward, Color.red);
                 Health opponentHealth = opponent.GetComponent<Health>();
                 StartCoroutine(DoDamage(opponentHealth, attackDelay));
@@ -60,6 +65,8 @@ public class Combat : MonoBehaviour
     {
         bool isOpponentEnemy = opponent.GetComponent<Enemy>() != null;
         bool isOpponentPlayer = opponent.GetComponent<Player>() != null;
+        Debug.Log("I'm " + (isPlayer ? "Player" : "Enemy"));
+        Debug.Log("He's " + (isOpponentPlayer ? "Player" : "Enemy"));
         return (isEnemy && isOpponentPlayer) || (isPlayer && isOpponentEnemy);
     }
 
@@ -68,6 +75,10 @@ public class Combat : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, myPower.maxDistance))
         {
+            Debug.Log("Enemy in range!!! Shoot!");
+
+            gunfireLine.SetPosition(1, hit.point);
+
             return hit.collider.gameObject;
         }
         return null;
@@ -77,6 +88,23 @@ public class Combat : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        opponentHealth.ModifyHealth(-1 * myPower.damage);
+        if (shootingAudio != null) 
+        {
+            shootingAudio.Play();
+        }
+        
+        gunfireLine.enabled = true;
+        yield return 1;
+        gunfireLine.enabled = false;
+        
+        if (shootingAudio != null) 
+        {
+            shootingAudio.Stop();
+        }
+
+        if (opponentHealth != null)
+        {
+            opponentHealth.ModifyHealth(-1 * myPower.damage);
+        }
     }
 }

@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         var sound = gameObject.GetComponentInChildren<AudioSource>();
         // sound.enabled = true;
 
-        transform.localPosition = new Vector3(0, 0, 1);
+        transform.localPosition = new Vector3(0, 1, 1);
         var rb = GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         transform.rotation = Quaternion.FromToRotation(Vector3.zero, transform.forward);
