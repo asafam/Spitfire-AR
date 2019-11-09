@@ -104,7 +104,6 @@ public class EnemyController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
         Health myHealth = GetComponent<Health>();
         if (myHealth != null)
         {

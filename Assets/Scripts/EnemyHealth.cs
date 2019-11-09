@@ -13,6 +13,8 @@ public class EnemyHealth : Health
         // Death animation
         Instantiate(explosion, transform.position, Quaternion.identity);
         // yield return new WaitForSeconds(1);
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 0.5f);
+
+        EnemyManager.instance.EnemyKilled(gameObject);
     }
 }

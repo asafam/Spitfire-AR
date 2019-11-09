@@ -15,12 +15,8 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    private void OnEnable() 
+    private void Start()
     {
-        
-    }
-
-    private void Start() {
         Time.timeScale = 0f;
     }
 
@@ -31,41 +27,23 @@ public class GameManager : MonoBehaviour
 
         scoreGameObject.SetActive(true);
         scoreGameObject.GetComponent<Score>().ResetTimer();
-
-        Register();
     }
 
-    private void WonGame()
+    public void WonGame()
     {
         Debug.Log("EndGame: " + deathUI.ToString());
         Time.timeScale = 0f;
 
         deathUI.SetActive(true);
         scoreGameObject.SetActive(false);
-
-        Deregister();
     }
 
-    private void LostGame()
+    public void LostGame()
     {
         Debug.Log("EndGame: " + deathUI.ToString());
         Time.timeScale = 0f;
 
         deathUI.SetActive(true);
         scoreGameObject.SetActive(false);
-
-        Deregister();
-    }
-
-    private void Register()
-    {
-        PlayerManager.instance.OnPlayerWon += WonGame;
-        PlayerManager.instance.OnPlayerKilled += LostGame;
-    }
-
-    private void Deregister()
-    {
-        PlayerManager.instance.OnPlayerWon -= WonGame;
-        PlayerManager.instance.OnPlayerKilled -= LostGame;
     }
 }

@@ -5,24 +5,23 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    public static EnemyManager instance;
     public GameObject enemyPrefab;
     public GameObject enemyMasterPrefab;
-    public int enemiesCount = 4;
-    public event Action OnEnemyKilled = delegate { };
+    public int enemiesCount = 0;
 
-    private void SpawnEnemy()
+    private void Awake()
     {
-        Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        instance = this;
     }
 
-    public void KillEnemy()
+    public void EnemyKilled(GameObject enemy)
     {
-        enemiesCount--;
-        enemiesCount = Mathf.Max(0, enemiesCount);
-        
-        if (OnEnemyKilled != null)
+        enemiesCount++;
+
+        if (enemy.GetComponent<EnemyAircraftCarrier>())
         {
-            OnEnemyKilled();
+            GameManager.instance.WonGame();
         }
     }
 }

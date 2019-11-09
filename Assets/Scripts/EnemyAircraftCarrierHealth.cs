@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAircraftCarrierHealth : Health
+public class EnemyAircraftCarrierHealth : EnemyHealth
 {
     public override void Die()
     {
