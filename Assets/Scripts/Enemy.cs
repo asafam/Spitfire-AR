@@ -21,7 +21,7 @@ public class Enemy : Interactable
 
     public override Transform GetPlayer()
     {
-        return PlayerManager.instance.player.transform;;
+        return PlayerManager.instance.player.transform;
     }
 
     private void Attack()

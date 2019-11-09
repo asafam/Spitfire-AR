@@ -39,15 +39,18 @@ public class Combat : MonoBehaviour
     }
     public void Attack()
     {
-        Debug.DrawLine(transform.position, transform.forward * 4f, Color.yellow);
+        Debug.DrawLine(transform.position, transform.forward * 4, Color.yellow);
         if (attackCooldown <= 0)
         {
             GameObject opponent = OpponentInRange();
 
             if (opponent != null && IsFoe(opponent))
             {
-                Debug.Log("Shooting to kill!!!!!!!!!!!!");
-                Debug.DrawLine(transform.position, transform.forward, Color.red);
+                if (isPlayer)
+                {
+                    Debug.Log("Shooting to kill!");
+                }
+                Debug.DrawLine(transform.position, transform.forward * 4, Color.red);
                 Health opponentHealth = opponent.GetComponent<Health>();
                 StartCoroutine(DoDamage(opponentHealth, attackDelay));
 
@@ -65,18 +68,21 @@ public class Combat : MonoBehaviour
     {
         bool isOpponentEnemy = opponent.GetComponent<Enemy>() != null;
         bool isOpponentPlayer = opponent.GetComponent<Player>() != null;
-        Debug.Log("I'm " + (isPlayer ? "Player" : "Enemy"));
-        Debug.Log("He's " + (isOpponentPlayer ? "Player" : "Enemy"));
+        // Debug.Log("I'm " + (isPlayer ? "Player" : "Enemy"));
+        // Debug.Log("He's " + (isOpponentPlayer ? "Player" : "Enemy"));
         return (isEnemy && isOpponentPlayer) || (isPlayer && isOpponentEnemy);
     }
 
     private GameObject OpponentInRange()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, myPower.maxDistance))
+        if (Physics.SphereCast(transform.position, 1, transform.TransformDirection(Vector3.forward), out hit, myPower.maxDistance))
         {
-            Debug.Log("Enemy in range!!! Shoot!");
-
+            if (isPlayer)
+            {
+                Debug.Log("Enemy in range!!! Shoot!");
+            }
+            
             gunfireLine.SetPosition(1, hit.point);
 
             return hit.collider.gameObject;
@@ -88,16 +94,16 @@ public class Combat : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        if (shootingAudio != null) 
+        if (shootingAudio != null)
         {
             shootingAudio.Play();
         }
-        
+
         gunfireLine.enabled = true;
         yield return 1;
         gunfireLine.enabled = false;
-        
-        if (shootingAudio != null) 
+
+        if (shootingAudio != null)
         {
             shootingAudio.Stop();
         }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public GameObject winhUI;
     public GameObject deathUI;
 
     public GameObject scoreGameObject;
@@ -14,11 +15,9 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    private void Start() {
+    private void Start()
+    {
         Time.timeScale = 0f;
-
-        PlayerManager.instance.OnPlayerWon += EndGame;
-        PlayerManager.instance.OnPlayerKilled += EndGame;
     }
 
     public void StartGame()
@@ -30,15 +29,21 @@ public class GameManager : MonoBehaviour
         scoreGameObject.GetComponent<Score>().ResetTimer();
     }
 
-    private void EndGame()
+    public void WonGame()
     {
         Debug.Log("EndGame: " + deathUI.ToString());
         Time.timeScale = 0f;
 
         deathUI.SetActive(true);
         scoreGameObject.SetActive(false);
+    }
 
-        PlayerManager.instance.OnPlayerWon -= EndGame;
-        PlayerManager.instance.OnPlayerKilled -= EndGame;
+    public void LostGame()
+    {
+        Debug.Log("EndGame: " + deathUI.ToString());
+        Time.timeScale = 0f;
+
+        deathUI.SetActive(true);
+        scoreGameObject.SetActive(false);
     }
 }

@@ -11,6 +11,6 @@ public class PlayerHealth : Health
         AudioSource sound = gameObject.GetComponentInChildren<AudioSource>();
         // sound.enabled = false;
 
-        PlayerManager.instance.KillPlayer();
+        PlayerManager.instance.PlayerKilled();
     }
 }

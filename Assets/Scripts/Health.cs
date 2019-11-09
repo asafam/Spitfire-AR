@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
 
     public void ModifyHealth(float amount)
     {
+        amount = Math.Min(amount, maxHealth);
         currentHealth += amount;
         currentHealth = Math.Max(0, Math.Min(currentHealth, maxHealth));
 
