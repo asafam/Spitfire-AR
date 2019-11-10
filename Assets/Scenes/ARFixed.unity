@@ -682,8 +682,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 532453602148506940, guid: 0986966c8457e40f99a1102569b5a3f8,
     type: 3}
-  enemyMasterPrefab: {fileID: 7020199738708474384, guid: 4eae9069871744691a2a47d88935185b,
-    type: 3}
   enemiesCount: 4
 --- !u!114 &387139444
 MonoBehaviour:
