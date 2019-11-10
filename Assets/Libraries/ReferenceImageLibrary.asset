@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
   m_Name: ReferenceImageLibrary
   m_EditorClassIdentifier: 
-  m_GuidLow: 5101878854981791679
-  m_GuidHigh: 7038156218080291222
+  m_GuidLow: 5113361266102315268
+  m_GuidHigh: 2874951226290109350
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 4908570855312915447
-      m_GuidHigh: 12161386687157378984
+      m_GuidLow: 5203246165663548280
+      m_GuidHigh: 896510591224244398
     m_SerializedTextureGuid:
-      m_GuidLow: 16466908293215355443
-      m_GuidHigh: 17472024915445917769
-    m_Size: {x: 0.3, y: 0.22500001}
+      m_GuidLow: 3786195761960606038
+      m_GuidHigh: 2435774270772544968
+    m_Size: {x: 0.1, y: 0.0714375}
     m_SpecifySize: 1
     m_Name: unity
     m_Texture: {fileID: 0}
